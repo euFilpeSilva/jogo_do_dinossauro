@@ -6,6 +6,8 @@ let isGameOver = false;
 let position = 0;
 
 function handleKeyUp(event) {
+ // o keyCode é a codificação dos botões do teclado
+// abaixo usamos o event.keyCode e comparamos para saber se é igual ao keyCode da tecla espaço
   if (event.keyCode === 32) {
     if (!isJumping) {
       jump();
@@ -46,13 +48,20 @@ function jump() {
 
 function createCactus() {
   const cactus = document.createElement('div');
+  // 1000 equivale a um mili segundo
   let cactusPosition = 1000;
+  // a função Math.random serve pra gerar valores aleatorios
+  // a baixo vamos gerar numeros aleatorios de 0 até 6 mil
   let randomTime = Math.random() * 6000;
 
   if (isGameOver) return;
-
+// adicionando clasee
   cactus.classList.add('cactus');
+  // inserindo elemento filho
+  // o cacto vai ficar sobreposto no background
   background.appendChild(cactus);
+
+  // toda vez que eu for adicionar um estilo pelo js sera assim
   cactus.style.left = cactusPosition + 'px';
 
   let leftTimer = setInterval(() => {
